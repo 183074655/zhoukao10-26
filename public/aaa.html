@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="javascripts/jquery-1.11.3.js"></script>
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+	<div id="box"></div>
+	<form action="">
+		<input type="text" class="txt1" placeholder="new term..." title="请在此输入字段">
+		<input type="text" class="txt2" placeholder="new definition..." title="请在此输入字段">
+		<input type="button" class="btn" value="提交">
+	</form>
+	<script>
+		$(function(){
+			$(".btn").click(function(){
+				var a1=$('.txt1').val();
+				var a2=$('.txt2').val();
+				console.log(a1)
+				console.log(a2)
+				$.ajax({
+					url:"http://localhost:3000",
+					type:"POST",
+					data:[a1,a2],
+					success:function(e){
+						for(var i in name1){
+							$('#box').append('<h1>'+e.name1[i]+'</h1>')
+							$('#box').append('<p>'+e.name2[i]+'</p>')
+						}
+					}
+				})
+
+
+
+			})
+
+			
+
+
+		})
+	</script>
+</body>
+</html>
